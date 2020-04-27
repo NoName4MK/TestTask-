@@ -1,0 +1,21 @@
+{
+    "env": {
+		"browser": true,
+		"es6": true,
+		"node": true
+    },
+    "extends": "eslint:recommended",
+    "parserOptions": {
+      	"ecmaVersion": 2018
+    },
+    "rules": {
+		"semi": ["error","always"],
+		"indent": [2,"tab"],
+		"linebreak-style": ["error","windows"],
+		"no-var":"error",
+		"no-new-object": "error",
+		"object-shorthand": ["error", "always"],
+		"quotes": ["error","single"],		
+	    "no-console": "off"
+    }
+}
