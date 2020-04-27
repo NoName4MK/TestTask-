@@ -81,15 +81,21 @@ const readFile = async (name: string) =>{
             }
             let arrayBook = data.trim().split('\n').map(el=>el.split(';'));
             const arrayHaderBook = arrayBook.shift();
-            const obj = arrayBook.map(el=>{
+            const authors = new Set(arrayBook.map(el=>el[1]));
+            const obj =[...authors].map(author =>{
                 return {
-                    author: el[1],
-                    books: {
-                        title: el[0],
-                        description: el[2]
-                    } 
+                    author: author,
+                    books: [
+                        ...arrayBook.filter(el=>el[1]==author).map(el=>{
+                            return {
+                                title: el[0],
+                                description: el[2]
+                            }
+                            
+                        })
+                    ]
                 }
-            })
+            });
             obj.sort((author1, author2): number =>{
                 if (author1.author > author2.author){
                     return 1;
@@ -104,6 +110,10 @@ const readFile = async (name: string) =>{
         });
     });
 }
+
+// const sortDate = (data: string) => {
+    
+// }
 
 
 async function createFile(name: string, data:any) {
