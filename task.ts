@@ -111,10 +111,6 @@ const readFile = async (name: string) =>{
     });
 }
 
-// const sortDate = (data: string) => {
-    
-// }
-
 
 async function createFile(name: string, data:any) {
     fs.appendFile(`${name}.json`, JSON.stringify(data), function (err) {
